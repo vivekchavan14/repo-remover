@@ -1,7 +1,9 @@
+// Repos.tsx
+
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
-import './../styles/Repos.css'
+import './../styles/Repos.css';
 
 interface Repo {
   id: number;
@@ -75,17 +77,16 @@ const Repos: React.FC = () => {
 
   return (
     <div className="repos-container">
-    <h1>Your Repositories</h1>
-    <ul>
-      {repos.map((repo) => (
-        <li className="repo-item" key={repo.id}>
-          {repo.name}{' '}
-          <button className="delete-button" onClick={() => deleteRepo(repo.full_name)}>Delete Permanently</button>
-        </li>
-      ))}
-    </ul>
-  </div>
-
+      <h1>Your Repositories</h1>
+      <ul>
+        {repos.map((repo) => (
+          <li className="repo-item" key={repo.id}>
+            {repo.name}{' '}
+            <button className="delete-button" onClick={() => deleteRepo(repo.full_name)}>Delete Permanently</button>
+          </li>
+        ))}
+      </ul>
+    </div>
   );
 };
 
