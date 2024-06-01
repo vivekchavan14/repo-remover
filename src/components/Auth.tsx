@@ -1,4 +1,5 @@
 import React from 'react';
+import './../styles/Auth.styles.css';
 
 const Auth: React.FC = () => {
   const clientId = process.env.REACT_APP_GITHUB_CLIENT_ID;
@@ -8,9 +9,9 @@ const Auth: React.FC = () => {
   const githubAuthUrl = `https://github.com/login/oauth/authorize?client_id=${clientId}&redirect_uri=${redirectUri}&scope=${scopes}`;
 
   return (
-    <div>
-      <a href={githubAuthUrl}>Login with GitHub</a>
-    </div>
+    <div className="auth-container">
+    <a className="auth-button" href={githubAuthUrl}>Login with GitHub</a>
+  </div>
   );
 };
 
