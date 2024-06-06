@@ -1,5 +1,3 @@
-// Repos.tsx
-
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
@@ -15,6 +13,7 @@ const Repos: React.FC = () => {
   const [repos, setRepos] = useState<Repo[]>([]);
   const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<string | null>(null);
+  const [searchTerm, setSearchTerm] = useState<string>('');
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -29,13 +28,19 @@ const Repos: React.FC = () => {
       try {
         const response = await axios.get('https://api.github.com/user/repos', {
           headers: {
-            Authorization: `token ${token}`,
+            Authorization: `Bearer ${token}`,
           },
         });
         setRepos(response.data);
         setLoading(false);
       } catch (error) {
-        setError('Failed to fetch repositories');
+        if (axios.isAxiosError(error)) {
+          console.error('Failed to fetch repositories', error.response?.data || error.message);
+          setError('Failed to fetch repositories');
+        } else {
+          console.error('Unexpected error', error);
+          setError('Unexpected error occurred');
+        }
         setLoading(false);
       }
     };
@@ -54,7 +59,7 @@ const Repos: React.FC = () => {
     try {
       await axios.delete(`https://api.github.com/repos/${fullName}`, {
         headers: {
-          Authorization: `token ${token}`,
+          Authorization: `Bearer ${token}`,
         },
       });
       setRepos(repos.filter((repo) => repo.full_name !== fullName));
@@ -67,6 +72,10 @@ const Repos: React.FC = () => {
     }
   };
 
+  const filteredRepos = repos.filter(repo =>
+    repo.name.toLowerCase().includes(searchTerm.toLowerCase())
+  );
+
   if (loading) {
     return <div>Loading...</div>;
   }
@@ -78,8 +87,15 @@ const Repos: React.FC = () => {
   return (
     <div className="repos-container">
       <h1>Your Repositories</h1>
+      <input
+        type="text"
+        placeholder="Search Repositories..."
+        value={searchTerm}
+        onChange={(e) => setSearchTerm(e.target.value)}
+        className="search-input"
+      />
       <ul>
-        {repos.map((repo) => (
+        {filteredRepos.map((repo) => (
           <li className="repo-item" key={repo.id}>
             {repo.name}{' '}
             <button className="delete-button" onClick={() => deleteRepo(repo.full_name)}>Delete Permanently</button>

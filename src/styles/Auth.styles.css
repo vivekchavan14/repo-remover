@@ -1,24 +1,78 @@
-/* styles.css */
+/* Auth.css */
+
+body {
+  background-color: #121212;
+  color: #e0e0e0;
+  font-family: 'Arial', sans-serif;
+  margin: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 
 .auth-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
+  text-align: center;
+  background-color: #1e1e1e;
+  padding: 3rem;
+  border-radius: 10px;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
+  animation: fadeIn 1s ease-in-out;
+}
+
+h1 {
+  margin-bottom: 1rem;
+  font-size: 2.5rem;
+}
+
+p {
+  margin-bottom: 2rem;
+  font-size: 1.2rem;
+  color: #b0b0b0;
+}
+
+.login-button {
+  padding: 0.75rem 2rem;
+  font-size: 1.2rem;
+  border: none;
+  border-radius: 5px;
+  background-color: #5865f2;
+  color: #ffffff;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.login-button:hover {
+  background-color: #4e5db7;
+  transform: scale(1.05);
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
   }
-  
-  .auth-button {
-    padding: 10px 20px;
-    background-color: #0366d6; /* GitHub blue */
-    color: #fff;
-    text-decoration: none;
-    border: none;
-    border-radius: 4px;
-    font-size: 16px;
-    cursor: pointer;
+  to {
+    opacity: 1;
+    transform: translateY(0);
   }
-  
-  .auth-button:hover {
-    background-color: #0059b3; /* Darker GitHub blue on hover */
+}
+
+/* Responsive Design */
+@media (max-width: 600px) {
+  .auth-container {
+    padding: 1.5rem;
   }
-  
+
+  h1 {
+    font-size: 2rem;
+  }
+
+  p {
+    font-size: 1rem;
+  }
+
+  .login-button {
+    padding: 0.5rem 1.5rem;
+    font-size: 1rem;
+  }
+}

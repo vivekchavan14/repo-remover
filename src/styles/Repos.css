@@ -1,24 +1,82 @@
-/* styles.css */
+/* Repos.css */
+
+body {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Arial', sans-serif;
+  background-color: #121212;
+  color: #e0e0e0;
+ 
+
+}
 
 .repos-container {
-    padding: 20px;
+  max-width: 800px;
+  margin: 2rem auto;
+  padding: 2rem;
+  background-color: #1e1e1e;
+  border-radius: 10px;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
+  height: 80;
+  width: 80;
+}
+
+.repos-container h1 {
+  margin-bottom: 1rem;
+  font-size: 2rem;
+}
+
+.search-input {
+  padding: 0.5rem;
+  font-size: 1rem;
+  margin-bottom: 1rem;
+  border: none;
+  border-radius: 5px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.repo-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.5rem;
+  border-bottom: 1px solid #444;
+}
+
+.delete-button {
+  padding: 0.3rem 0.6rem;
+  background-color: #f44336;
+  border: none;
+  border-radius: 3px;
+  color: #fff;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.delete-button:hover {
+  background-color: #d32f2f;
+}
+
+/* Responsive Design */
+@media (max-width: 600px) {
+  .repos-container {
+    padding: 1rem;
   }
-  
+
   .repo-item {
-    margin-bottom: 10px;
+    flex-direction: column;
+    align-items: flex-start;
   }
-  
+
   .delete-button {
-    padding: 5px 10px;
-    background-color: #d73a49; /* GitHub red */
-    color: #fff;
-    border: none;
-    border-radius: 4px;
-    font-size: 14px;
-    cursor: pointer;
+    margin-top: 0.5rem;
   }
-  
-  .delete-button:hover {
-    background-color: #9b1b30; /* Darker GitHub red on hover */
-  }
-  
+}
