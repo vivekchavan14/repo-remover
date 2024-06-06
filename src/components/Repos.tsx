@@ -72,6 +72,11 @@ const Repos: React.FC = () => {
     }
   };
 
+  const handleLogout = () => {
+    localStorage.removeItem('github_token');
+    navigate('/');
+  };
+
   const filteredRepos = repos.filter(repo =>
     repo.name.toLowerCase().includes(searchTerm.toLowerCase())
   );
@@ -94,6 +99,7 @@ const Repos: React.FC = () => {
         onChange={(e) => setSearchTerm(e.target.value)}
         className="search-input"
       />
+      <button className="logout-button" onClick={handleLogout}>Logout</button>
       <ul>
         {filteredRepos.map((repo) => (
           <li className="repo-item" key={repo.id}>

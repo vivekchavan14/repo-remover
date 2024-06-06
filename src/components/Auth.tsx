@@ -1,5 +1,3 @@
-// Auth.tsx
-
 import React from 'react';
 import './../styles/Auth.styles.css';
 
