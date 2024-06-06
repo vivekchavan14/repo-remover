@@ -1,21 +1,27 @@
-/* Repos.css */
-
-
-
-body {
+/* Apply a full-height flexbox layout to center the container */
+html, body {
+  height: 100%;
+  margin: 0;
+  font-family: 'Arial', sans-serif;
   background-color: #121212;
   color: #e0e0e0;
-  font-family: 'Arial', sans-serif;
-  height: 100%;
-  width : 100%;
-  display : flex;
+  display: flex;
   align-items: center;
   justify-content: center;
 }
 
+body {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 1rem; /* Prevent overflow on small screens */
+}
+
 .repos-container {
   max-width: 800px;
-  margin: 2rem auto;
+  width: 100%; /* Ensure container takes full width on smaller screens */
+  max-height: 80vh; /* Prevent overflow by limiting height */
+  overflow-y: auto; /* Enable scrolling if content overflows */
   padding: 2rem;
   background-color: #1e1e1e;
   border-radius: 10px;
@@ -83,5 +89,22 @@ ul {
   }
   to {
     opacity: 1;
+  }
+}
+
+/* Responsive Design */
+@media (max-width: 600px) {
+  .repos-container {
+    padding: 1rem;
+  }
+
+  .repo-item {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .delete-button {
+    margin-top: 0.5rem;
+    align-self: flex-end;
   }
 }
